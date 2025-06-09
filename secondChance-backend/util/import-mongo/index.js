@@ -3,16 +3,14 @@ const { MongoClient } = require('mongodb')
 const fs = require('fs')
 const path = require('path')
 
-const url = process.env.MONGO_URL // const, template string gereksiz
-const filename = path.join(__dirname, 'secondChanceItems.json') // path.join kullandık
+const url = process.env.MONGO_URL
+const filename = path.join(__dirname, 'secondChanceItems.json')
 const dbName = 'secondChance'
 const collectionName = 'secondChanceItems'
 
-
 const data = JSON.parse(fs.readFileSync(filename, 'utf8')).docs
 
-
-async function loadData() {
+async function loadData () {
   const client = new MongoClient(url)
 
   try {
